@@ -14,6 +14,8 @@ func main() {
 	initializers.ConnectDB()
 	initializers.LoadTimezone()
 
+	gin.SetMode(gin.ReleaseMode)
+
 	router := gin.Default()
 	router.Use(gin.Recovery())
 
