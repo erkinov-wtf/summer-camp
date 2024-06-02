@@ -21,6 +21,8 @@ func LoadTimezone() *time.Location {
 		}
 	})
 
+	time.Local = Timezone
+
 	log.Println("Timezone set successfully", "", "")
 	return Timezone
 }
