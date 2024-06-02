@@ -65,7 +65,7 @@ func (*appController) Patch(context *gin.Context) {
 		FirstNumber    *float64 `json:"first_number_for_admin_patch"`
 		SecondNumber   *float64 `json:"second_number_for_admin_patch"`
 		ExpectedNumber *float64 `json:"expected_number"`
-		Text           *string  `json:"text"`
+		Text           *string  `json:"text_for_admin_patch"`
 	}
 
 	if err := context.BindJSON(&updates); err != nil {
