@@ -9,6 +9,7 @@ import (
 
 func (*appController) Create(context *gin.Context) {
 	var body struct {
+		Name         string  `form:"name" binding:"required" json:"name"`
 		FirstNumber  float64 `form:"first_number" binding:"required" json:"first_number"`
 		SecondNumber float64 `form:"second_number" binding:"required" json:"second_number"`
 		Text         string  `form:"text" binding:"required" json:"text"`
@@ -20,6 +21,7 @@ func (*appController) Create(context *gin.Context) {
 	}
 
 	productType := app.App{
+		Name:         body.Name,
 		FirstNumber:  body.FirstNumber,
 		SecondNumber: body.SecondNumber,
 		Text:         body.Text,
@@ -59,6 +61,7 @@ func (*appController) Patch(context *gin.Context) {
 	}
 
 	var updates struct {
+		Name           *string  `json:"name_for_admin_patch"`
 		FirstNumber    *float64 `json:"first_number_for_admin_patch"`
 		SecondNumber   *float64 `json:"second_number_for_admin_patch"`
 		ExpectedNumber *float64 `json:"expected_number"`
@@ -70,6 +73,9 @@ func (*appController) Patch(context *gin.Context) {
 		return
 	}
 
+	if updates.Name != nil {
+		existingProduct.Name = *updates.Name
+	}
 	if updates.FirstNumber != nil {
 		existingProduct.FirstNumber = *updates.FirstNumber
 	}

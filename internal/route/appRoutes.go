@@ -8,7 +8,7 @@ import (
 func SetupAppRoutes(router *gin.RouterGroup, container *dependencyIndejection.Container) {
 	appRoutes := router.Group("/")
 	{
-		appRoutes.POST("/create/2024-05-29/create-app-data", container.AppController.Create)
+		appRoutes.POST("/create/", container.AppController.Create)
 		appRoutes.GET("/:id", container.AppController.GetById)
 		appRoutes.PATCH("/:id", container.AppController.Patch)
 	}
