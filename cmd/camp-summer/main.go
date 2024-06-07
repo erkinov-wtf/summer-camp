@@ -5,6 +5,7 @@ import (
 	"camp-summer/internal/config"
 	"camp-summer/internal/initializers"
 	"camp-summer/internal/route"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,7 +18,7 @@ func main() {
 	gin.SetMode(gin.ReleaseMode)
 
 	router := gin.Default()
-	router.Use(gin.Recovery())
+	router.Use(gin.Recovery(), cors.Default())
 
 	apiPrefixRoute := router.Group("/api/camp")
 
